@@ -10,9 +10,51 @@ class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLogged: false,
+      someone: null,
+      chat: "",
     };
   }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.setState({
+        someone: user,
+      });
+    });
+  }
+
+  // componentDidUpdate() {
+  // 新しいメッセージが来たら，スクロールとかの機能
+  // }
+
+  // componentWillUnmount() {
+  //   ?
+  // }
+
+  login = () => {
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then((user) => {
+        alert(user.user.uid.substr(0, 10) + "さんでログインしました");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
+  logout = () => {
+    firebase
+      .auth()
+      .signOut()
+      .then(() => {
+        document.location.reload();
+        alert("ログアウトしました");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
 
   render() {
     return (
@@ -20,8 +62,12 @@ class Chat extends React.Component {
         <header>
           <h1>Connect</h1>
         </header>
-        <Auth />
-        <Form />
+        <Auth
+          someone={this.state.someone}
+          login={() => this.login()}
+          logout={() => this.logout()}
+        />
+        <Form someone={this.state.someone} submit={() => this.submit()} />
         <footer>
           <p>(c) serenade.com</p>
         </footer>

@@ -7,8 +7,8 @@ import "./App.css";
 const Form = (props) => {
   return (
     <>
-      <textarea placeholder="メッセージを入力" />
-      <input />
+      <textarea id={"chat"} name="text" placeholder="comment" />
+      <input type="submit" id={"submit"} onClick={props.submit} />
     </>
   );
 };

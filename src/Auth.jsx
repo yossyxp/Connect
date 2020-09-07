@@ -7,8 +7,11 @@ import "./App.css";
 const Auth = (props) => {
   return (
     <>
-      <button>ログイン</button>
-      <button>ログアウト</button>
+      {props.someone ? (
+        <button onClick={props.logout}>ログアウト</button>
+      ) : (
+        <button onClick={props.login}>ログイン</button>
+      )}
     </>
   );
 };
