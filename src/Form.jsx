@@ -11,14 +11,18 @@ const Form = (props) => {
         <textarea
           id={"chat"}
           name="text"
-          placeholder="comment"
+          placeholder="メッセージを入力"
           onChange={props.changeText}
         />
       ) : (
         <div></div>
       )}
       {props.someone ? (
-        <input type="submit" onClick={() => props.submit()} />
+        <input
+          className="submit"
+          type="submit"
+          onClick={() => props.submit()}
+        />
       ) : (
         <div></div>
       )}

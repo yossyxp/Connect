@@ -1,7 +1,8 @@
 import React from "react";
 import Auth from "./Auth";
-import Form from "./Form";
+import Init from "./Init";
 import State from "./State";
+import Form from "./Form";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
@@ -111,21 +112,33 @@ class Chat extends React.Component {
     return (
       <>
         <header>
-          <h1>Connect</h1>
+          <h1 className="title">Connect</h1>
+          <Auth
+            someone={this.state.someone}
+            login={() => this.login()}
+            logout={() => this.logout()}
+          />
         </header>
-        <Auth
-          someone={this.state.someone}
-          login={() => this.login()}
-          logout={() => this.logout()}
-        />
-        {this.state.messages.map((m, i) => {
-          return <State key={i} message={m} />;
-        })}
-        <Form
-          someone={this.state.someone}
-          changeText={this.changeText}
-          submit={() => this.submit()}
-        />
+        <main>
+          <Init someone={this.state.someone} />
+          {this.state.someone ? (
+            <div></div>
+          ) : (
+            <Auth
+              someone={this.state.someone}
+              login={() => this.login()}
+              logout={() => this.logout()}
+            />
+          )}
+          {this.state.messages.map((m, i) => {
+            return <State key={i} message={m} someone={this.state.someone} />;
+          })}
+          <Form
+            someone={this.state.someone}
+            changeText={this.changeText}
+            submit={() => this.submit()}
+          />
+        </main>
         <footer>
           <p>(c) 練習中.com</p>
         </footer>

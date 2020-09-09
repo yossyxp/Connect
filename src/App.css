@@ -1,3 +1,120 @@
-.hidden {
-  display: none;
+body {
+  font-size: 25px;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans", Meiryo, sans-serif;
+  color: #dcdcdc;
+  margin: 0 auto;
+}
+
+header {
+  background: #35357d;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  display: flex;
+}
+
+main {
+  text-align: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+footer {
+  background: #35357d;
+  height: 100px;
+  margin-top: 32px;
+}
+
+footer p {
+  margin: 0;
+  text-align: center;
+  line-height: 100px;
+  font-size: 14px;
+  color: gray;
+}
+
+.title {
+  margin: 0 auto;
+}
+
+.login,
+.logout {
+  background: #35357d;
+  width: 140px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 10px;
+  border-color: #35357d;
+  user-select: none;
+  font-size: 20px;
+  color: #c0c0c0;
+  margin: 0 auto;
+}
+
+.login:hover,
+.logout:hover {
+  background: #ffffff;
+  outline: none;
+  border-color: #35357d;
+  border-width: 2px;
+  color: #35357d;
+}
+
+h2 {
+  margin: 0;
+  padding-top: 50px;
+  padding-bottom: 30px;
+}
+
+h3 {
+  margin: 0;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.first {
+  color: #35357d;
+  padding-bottom: 30px;
+}
+
+.image {
+  border: double 10px #35357d;
+}
+
+.init {
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+#chat {
+  width: 500px;
+  height: 70px;
+  font-size: 15px;
+  outline: none;
+  border-color: #35357d;
+  border-width: 5px;
+  color: #35357d;
+}
+
+.chats {
+  background: #ffffff;
+  color: #35357d;
+}
+
+.submit {
+  width: 70px;
+  height: 30px;
+  margin-left: 15px;
+  cursor: pointer;
+  border-radius: 10px;
+  border-color: #35357d;
+  user-select: none;
+  font-size: 16px;
+  background: #35357d;
+  color: #ffffff;
+}
+
+.submit:hover {
+  opacity: 0.8;
 }

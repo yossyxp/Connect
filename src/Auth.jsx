@@ -8,9 +8,13 @@ const Auth = (props) => {
   return (
     <>
       {props.someone ? (
-        <button onClick={() => props.logout()}>ログアウト</button>
+        <button className="login" onClick={() => props.logout()}>
+          ログアウト
+        </button>
       ) : (
-        <button onClick={() => props.login()}>ログイン</button>
+        <button className="logout" onClick={() => props.login()}>
+          ログイン
+        </button>
       )}
     </>
   );
