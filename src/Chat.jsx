@@ -1,11 +1,14 @@
 import React from "react";
 import Auth from "./Auth";
 import Form from "./Form";
+import State from "./State";
 import firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 import "firebase/database";
 import "./App.css";
+
+// const messages = firebaseDb.collection('messages')
 
 class Chat extends React.Component {
   constructor(props) {
@@ -13,6 +16,7 @@ class Chat extends React.Component {
     this.state = {
       someone: "",
       text: "",
+      messages: [],
     };
     this.changeText = this.changeText.bind(this);
   }
@@ -23,6 +27,26 @@ class Chat extends React.Component {
         someone: user,
       });
     });
+
+    firebase
+      .firestore()
+      .collection("messages")
+      .orderBy("created")
+      .onSnapshot((querySnapshot) => {
+        // クエリが非同期処理のため、この中にsetStateなどを書かないと空になってしまう
+        let msgs = [];
+        querySnapshot.forEach((doc) => {
+          // 新しい順に取得される
+          const d = doc.data();
+          msgs.push({
+            text: d.chat,
+            user: d.uid.substr(0, 10),
+          });
+        });
+        this.setState({
+          messages: msgs,
+        });
+      });
   }
 
   // componentDidUpdate() {
@@ -98,6 +122,9 @@ class Chat extends React.Component {
           login={() => this.login()}
           logout={() => this.logout()}
         />
+        {this.state.messages.map((m, i) => {
+          return <State key={i} message={m} />;
+        })}
         <Form
           someone={this.state.someone}
           changeText={this.changeText}
