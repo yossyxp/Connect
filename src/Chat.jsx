@@ -2,6 +2,7 @@ import React from "react";
 import Auth from "./Auth";
 import Form from "./Form";
 import firebase from "firebase/app";
+import "firebase/firestore";
 import "firebase/auth";
 import "firebase/database";
 import "./App.css";
@@ -10,9 +11,10 @@ class Chat extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      someone: null,
-      chat: "",
+      someone: "",
+      text: "",
     };
+    this.changeText = this.changeText.bind(this);
   }
 
   componentDidMount() {
@@ -24,7 +26,7 @@ class Chat extends React.Component {
   }
 
   // componentDidUpdate() {
-  // 新しいメッセージが来たら，スクロールとかの機能
+
   // }
 
   // componentWillUnmount() {
@@ -56,6 +58,35 @@ class Chat extends React.Component {
       });
   };
 
+  changeText(e) {
+    if (e.target.name == "text") {
+      this.setState({
+        text: e.target.value,
+      });
+    }
+  }
+
+  submit = () => {
+    firebase
+      .firestore()
+      .collection("messages")
+      .add({
+        chat: this.state.text,
+        created: firebase.firestore.FieldValue.serverTimestamp(),
+        uid: this.state.someone ? this.state.someone.uid : "nobody",
+      })
+      .then((doc) => {
+        console.log(`${doc.id} add!`);
+      })
+      .catch((error) => {
+        console.log("not add");
+        console.log(error);
+      });
+    const chat = document.getElementById("chat");
+    chat.value = "";
+    chat.focus();
+  };
+
   render() {
     return (
       <>
@@ -67,9 +98,13 @@ class Chat extends React.Component {
           login={() => this.login()}
           logout={() => this.logout()}
         />
-        <Form someone={this.state.someone} submit={() => this.submit()} />
+        <Form
+          someone={this.state.someone}
+          changeText={this.changeText}
+          submit={() => this.submit()}
+        />
         <footer>
-          <p>(c) serenade.com</p>
+          <p>(c) 練習中.com</p>
         </footer>
       </>
     );

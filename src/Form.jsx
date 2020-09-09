@@ -7,8 +7,13 @@ import "./App.css";
 const Form = (props) => {
   return (
     <>
-      <textarea id={"chat"} name="text" placeholder="comment" />
-      <input type="submit" id={"submit"} onClick={props.submit} />
+      <textarea
+        id={"chat"}
+        name="text"
+        placeholder="comment"
+        onChange={props.changeText}
+      />
+      <input type="submit" onClick={() => props.submit()} />
     </>
   );
 };
