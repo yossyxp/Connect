@@ -7,13 +7,21 @@ import "./App.css";
 const Form = (props) => {
   return (
     <>
-      <textarea
-        id={"chat"}
-        name="text"
-        placeholder="comment"
-        onChange={props.changeText}
-      />
-      <input type="submit" onClick={() => props.submit()} />
+      {props.someone ? (
+        <textarea
+          id={"chat"}
+          name="text"
+          placeholder="comment"
+          onChange={props.changeText}
+        />
+      ) : (
+        <div></div>
+      )}
+      {props.someone ? (
+        <input type="submit" onClick={() => props.submit()} />
+      ) : (
+        <div></div>
+      )}
     </>
   );
 };

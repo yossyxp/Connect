@@ -8,8 +8,6 @@ import "firebase/auth";
 import "firebase/database";
 import "./App.css";
 
-// const messages = firebaseDb.collection('messages')
-
 class Chat extends React.Component {
   constructor(props) {
     super(props);
@@ -33,10 +31,8 @@ class Chat extends React.Component {
       .collection("messages")
       .orderBy("created")
       .onSnapshot((querySnapshot) => {
-        // クエリが非同期処理のため、この中にsetStateなどを書かないと空になってしまう
         let msgs = [];
         querySnapshot.forEach((doc) => {
-          // 新しい順に取得される
           const d = doc.data();
           msgs.push({
             text: d.chat,
