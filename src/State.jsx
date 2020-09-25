@@ -7,15 +7,15 @@ import "./App.css";
 const State = (props) => {
   return (
     <>
-      {/* {props.someone ? ( */}
-      <div>
-        <p className="chats">
-          {props.message.user}：{props.message.text}
-        </p>
-      </div>
-      {/* ) : ( */}
-      {/* <div></div> */}
-      {/* )} */}
+      {props.someone ? (
+        <div>
+          <p className="chats">
+            {props.message.user}：{props.message.text}
+          </p>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </>
   );
 };
