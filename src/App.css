@@ -1,5 +1,5 @@
 body {
-  font-size: 26px;
+  font-size: 25px;
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
     "Hiragino Sans", Meiryo, sans-serif;
   color: #dcdcdc;
@@ -95,11 +95,13 @@ h3 {
   border-color: #35357d;
   border-width: 5px;
   color: #35357d;
+  margin-top: 30px;
 }
 
 .chats {
-  background: #ffffff;
+  background: red;
   color: #35357d;
+  width: 50%;
 }
 
 .submit {
@@ -117,4 +119,27 @@ h3 {
 
 .submit:hover {
   opacity: 0.8;
+}
+
+.left {
+  text-align: left;
+  background-color: #dcdcdc;
+  color: #35357d;
+  width: 70%;
+  margin-right: auto;
+  margin-left: 30px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border: 2px solid #1f2f54; /* 枠線 */
+  border-radius: 0.67em; /* 角丸 */
+}
+
+.left_name {
+  text-align: left;
+  margin: 10px;
+  margin-left: 32px;
+  margin-bottom: 0px;
+  color: #35357d;
+  font-size: 22px;
 }

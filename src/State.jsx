@@ -9,9 +9,8 @@ const State = (props) => {
     <>
       {props.someone ? (
         <div>
-          <p className="chats">
-            {props.message.user}：{props.message.text}
-          </p>
+        <p className="left_name">{props.message.user}</p>
+      <div className={"chats" + " " + "left"}>{props.message.text}</div>
         </div>
       ) : (
         <div></div>
