@@ -5,17 +5,32 @@ import "firebase/database";
 import "./App.css";
 
 const State = (props) => {
-  return (
+  if (props.member === props.message.user) {  // iconが渡されていない場合
+    return (
+      <>
+      {props.someone ? (
+        <div>
+        <p className="right_name">{props.message.user}</p>
+        <div className={"chats" + " " + "right"}>{props.message.text}</div>
+        </div>
+      ) : (
+        <div></div>
+      )}
+    </>
+    )
+  } else {
+    return (
     <>
       {props.someone ? (
         <div>
         <p className="left_name">{props.message.user}</p>
-      <div className={"chats" + " " + "left"}>{props.message.text}</div>
+        <div className={"chats" + " " + "left"}>{props.message.text}</div>
         </div>
       ) : (
         <div></div>
       )}
     </>
   );
+ }; 
 };
 export default State;

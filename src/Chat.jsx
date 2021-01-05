@@ -14,6 +14,7 @@ class Chat extends React.Component {
     super(props);
     this.state = {
       someone: "",
+      member: "",
       text: "",
       messages: [],
     };
@@ -60,6 +61,9 @@ class Chat extends React.Component {
       .signInAnonymously()
       .then((user) => {
         alert(user.user.uid.substr(0, 10) + "さんでログインしました");
+        this.setState({
+          member: user.user.uid.substr(0, 10),
+        });
       })
       .catch((error) => {
         alert(error.message);
@@ -113,6 +117,7 @@ class Chat extends React.Component {
       <>
         <header>
           <h1 className="title">Connect</h1>
+          <div className="login_user">ログインユーザー：{this.state.member}</div>
           <Auth
             someone={this.state.someone}
             login={() => this.login()}
@@ -131,7 +136,7 @@ class Chat extends React.Component {
             />
           )}
           {this.state.messages.map((m, i) => {
-            return <State key={i} message={m} someone={this.state.someone} />;
+            return <State key={i} message={m} someone={this.state.someone} member={this.state.member}/>;
           })}
           <Form
             someone={this.state.someone}

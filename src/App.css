@@ -4,6 +4,7 @@ body {
     "Hiragino Sans", Meiryo, sans-serif;
   color: #dcdcdc;
   margin: 0 auto;
+  background: #dcdcdc;
 }
 
 header {
@@ -17,6 +18,7 @@ main {
   text-align: center;
   align-items: center;
   min-height: 100vh;
+  background: #dcdcdc;
 }
 
 footer {
@@ -35,6 +37,12 @@ footer p {
 
 .title {
   margin: 0 auto;
+}
+
+.login_user {
+  font-size: 15px;
+  margin: 0 auto;
+  margin-top: 20px;
 }
 
 .login,
@@ -123,9 +131,9 @@ h3 {
 
 .left {
   text-align: left;
-  background-color: #dcdcdc;
+  background-color: white;
   color: #35357d;
-  width: 70%;
+  width: 45%;
   margin-right: auto;
   margin-left: 30px;
   padding: 10px;
@@ -139,6 +147,29 @@ h3 {
   text-align: left;
   margin: 10px;
   margin-left: 32px;
+  margin-bottom: 0px;
+  color: #35357d;
+  font-size: 22px;
+}
+
+.right {
+  text-align: left;
+  background-color: #35357d;
+  color: white;
+  width: 45%;
+  margin-right: 30px;
+  margin-left: auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border: 2px solid #1f2f54; /* 枠線 */
+  border-radius: 0.67em; /* 角丸 */
+}
+
+.right_name {
+  text-align: right;
+  margin: 10px;
+  margin-right: 32px;
   margin-bottom: 0px;
   color: #35357d;
   font-size: 22px;
