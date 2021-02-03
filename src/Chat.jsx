@@ -117,12 +117,14 @@ class Chat extends React.Component {
       <>
         <header>
           <h1 className="title">Connect</h1>
+          <div className="login2">
           <div className="login_user">ログインユーザー：{this.state.member}</div>
           <Auth
             someone={this.state.someone}
             login={() => this.login()}
             logout={() => this.logout()}
           />
+          </div>
         </header>
         <main>
           <Init someone={this.state.someone} />
